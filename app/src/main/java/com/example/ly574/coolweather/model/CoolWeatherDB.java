@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.ly574.coolweather.db.CoolWeatherOpenHelper;
 
@@ -16,13 +17,14 @@ import java.util.List;
 
 public class CoolWeatherDB {
     public static final String DB_NAME = "cool_weather";
-    public static final int VERSION = 1;
+    public static final int VERSION = 2;
     private static CoolWeatherDB coolWeatherDB;
     private SQLiteDatabase db;
 
     private CoolWeatherDB(Context context){
         CoolWeatherOpenHelper dbhelper = new CoolWeatherOpenHelper(context, DB_NAME, null ,VERSION);
         db = dbhelper.getWritableDatabase();
+        Log.i("info","create dbhelper");
     }
 
     public synchronized static CoolWeatherDB getInstance(Context context){
